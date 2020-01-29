@@ -1,0 +1,4 @@
+SELECT COUNT(DISTINCT(A.uid)) AS count FROM
+(SELECT * FROM piwik_track WHERE event_name= 'FIRST_INSTALL' AND time ='2017-04-01') as A INNER JOIN
+(SELECT * FROM piwik_track WHERE event_name<> 'FIRST_INSTALL' AND time >='2017-04-02' AND time <'2017-04-09') as B
+on A.uid = B.uid;
